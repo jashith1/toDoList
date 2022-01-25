@@ -1,0 +1,22 @@
+<%-include("partials/header")-%>
+  <div class="box" id="heading">
+    <h1><%=title%></h1>
+  </div>
+
+  <div class="box">
+    <%checker.forEach(function(itemObject){%>
+      <div class="item listItem">
+        <form action="/lists/<%=pathAction%>" method="post">
+          <input type="checkbox" name="checkbox" onchange="this.form.submit()" value="<%=itemObject._id%>">
+          <label for="checkbox"><%=itemObject.myItems%></label>
+        </form>
+      </div>
+    <%})%>
+
+    <form class="item" action="/lists/<%=pathAction%>" method="post">
+      <input type="text" name="newItem" placeholder="new item" autocomplete="off" required autofocus>
+      <button type="submit" name="button">+</button>
+    </form>
+  </div>
+
+<%-include("partials/footer")-%>
